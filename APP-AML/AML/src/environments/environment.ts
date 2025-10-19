@@ -2,8 +2,8 @@ export const environment = {
 
 
     production: true,
-    companyName: 'Gifs',
-    companyName2: 'App',
-    companySlogan: 'Maneja tus gifs'
+    companyName: 'App',
+    companyName2: 'AML',
+    companySlogan: 'Juntos en plenitud.'
 
 };

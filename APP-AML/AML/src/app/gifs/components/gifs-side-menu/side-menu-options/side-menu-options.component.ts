@@ -18,17 +18,18 @@ export class SideMenuOptionsComponent {
 
   menuOptions: MenuOption[] = [
     {
-      icon: 'fa-solid fa-chart-line',
-      label: 'Trending',
-      subLabel: 'Gifs Populares',
-      route: '/dashboard/trending',
+      icon: 'fa-solid fa-users',
+
+      label: 'Convenios',
+      subLabel: 'Gestionar convenios',
+      route: '/dashboard/agreements',
 
     },
     {
-      icon: 'fa-solid fa-magnifying-glass',
-      label: 'Buscador',
-      subLabel: 'Buscar Gifs',
-      route: '/dashboard/search',
+      icon: 'fa-solid fa-tasks',
+      label: 'Actividad',
+      subLabel: 'Gestionar actividad',
+      route: '/dashboard/activity',
 
     }
   ]

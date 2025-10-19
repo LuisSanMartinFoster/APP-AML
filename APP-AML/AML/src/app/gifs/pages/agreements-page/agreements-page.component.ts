@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-trending-page',
+  selector: 'app-agreements-page',
   imports: [],
-  templateUrl: './trending-page.component.html',
+  templateUrl: './agreements-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class TrendingPageComponent { }
+export default class agreementsPageComponent { }

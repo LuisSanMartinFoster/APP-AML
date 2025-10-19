@@ -9,20 +9,20 @@ export const routes: Routes = [
 
         children: [
             {
-                path: 'trending',
+                path: 'agreements',
                 loadComponent: () =>
-                    import('./gifs/pages/trending-page/trending-page.component')
+                    import('./gifs/pages/agreements-page/agreements-page.component')
             },
 
             {
-                path: 'search',
+                path: 'activity',
                 loadComponent: () =>
-                    import('./gifs/pages/search-page/search-page.component')
+                    import('./gifs/pages/activity-page/activity-page.component')
             },
 
             {
                 path: '**',
-                redirectTo: 'trending'
+                redirectTo: 'activity'
             }
 
         ]
