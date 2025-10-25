@@ -1,0 +1,8 @@
+
+<ul>
+    @for (activity of activitys(); track activity.idActivity; let idx = $index) {
+        <li>
+            <span>{{idx+1}} - {{activity.title}}</span>
+        </li>
+    }
+</ul>

@@ -1,0 +1,54 @@
+<div class="bg-white rounded-2xl shadow-2xl p-6 z-50 max-w-lg w-full mx-auto space-y-4" aria-modal="true" role="dialog">
+  <h2 class="text-xl font-semibold text-gray-800 mb-2 text-center">Agregar Actividad</h2>
+
+  <div>
+    <label class="block text-gray-700 font-medium mb-1">Organizador</label>
+    <input type="text" placeholder="Organizador"
+      class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      [value]="organizador()" (input)="organizador.set(txtOrganizador.value)" #txtOrganizador>
+  </div>
+
+  <div>
+    <label class="block text-gray-700 font-medium mb-1">Título de la Actividad</label>
+    <input type="text" placeholder="Título de la actividad"
+      class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      [value]="title()" (input)="title.set(txtTitle.value)" #txtTitle>
+  </div>
+
+  <div>
+    <label class="block text-gray-700 font-medium mb-1">Descripción</label>
+    <textarea placeholder="Descripción"
+      class="w-full border border-gray-300 rounded-lg px-3 py-2 h-24 resize-none focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      [value]="description()" (input)="description.set(txtDescription.value)" #txtDescription></textarea>
+  </div>
+
+  <div>
+    <label class="block text-gray-700 font-medium mb-1">Lugar / Ubicación</label>
+    <input type="text" placeholder="Lugar o dirección"
+      class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      [value]="place()" (input)="place.set(txtPlace.value)" #txtPlace>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4 mt-2">
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Fecha de Inicio</label>
+      <input type="date"
+        class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        [value]="startDate() | date:'yyyy-MM-dd'" (change)="onStartDateChange(txtStartDate.value)" #txtStartDate>
+    </div>
+
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Fecha de Término</label>
+      <input type="date"
+        class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        [value]="finishDate() | date:'yyyy-MM-dd'" (change)="onFinishDateChange(txtFinishDate.value)" #txtFinishDate>
+    </div>
+  </div>
+
+  <div class="flex justify-center mt-4">
+    <button (click)="addActivity()"
+      class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition-all shadow-md">
+      Agregar Actividad
+    </button>
+  </div>
+</div>
