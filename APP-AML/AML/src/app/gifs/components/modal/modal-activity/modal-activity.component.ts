@@ -15,29 +15,27 @@ export class ModalActivityComponent {
   title = signal('');
   description = signal('');
   startDate = signal<Date | null>(null);
-  finishDate = signal<Date | null>(null);
+  startHour = signal('');
   place = signal('');
   imagen = signal('');
 
   newActivity = output<Activity>();
 
   onStartDateChange(dateString: string): void {
-      if (dateString) {
-        this.startDate.set(new Date(dateString));
-      } else {
-        this.startDate.set(null);
-      }
+    if (dateString) {
+      this.startDate.set(new Date(dateString));
+    } else {
+      this.startDate.set(null);
     }
+  }
 
-    
-    onFinishDateChange(dateString: string): void {
-      if (dateString) {
-        
-        this.finishDate.set(new Date(dateString));
-      } else {
-        this.finishDate.set(null);
-      }
-    }
+  
+  onStartHourChange(value: string) {
+    this.startHour.set(value);
+  }
+
+
+
 
   addActivity() {
 
@@ -47,7 +45,7 @@ export class ModalActivityComponent {
       title: this.title(),
       description: this.description(),
       startDate: this.startDate() as Date,
-      finishDate: this.finishDate() as Date,
+      startHour: this.startHour(),
       place: this.place(),
     }
     this.newActivity.emit(newActivity);

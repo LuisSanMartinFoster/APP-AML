@@ -4,6 +4,6 @@ export interface Activity {
     title: string;
     description: string;
     startDate: Date;
-    finishDate: Date;
+    startHour: String;
     place: string;
 }
