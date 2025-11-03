@@ -3,7 +3,6 @@ export interface Activity {
     organizador: string;
     title: string;
     description: string;
-    startDate: Date;
-    startHour: String;
     place: string;
+    startDateTime: Date;
 }

@@ -1,0 +1,73 @@
+<div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 pt-24 pb-12">
+    <div class="container mx-auto px-6 max-w-[1400px]">
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">Convenios</h1>
+            <p class="text-gray-600">Gestiona y organiza tus convenios</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            @for (agreement of agreements(); track agreement.idAgreements; let idx = $index) {
+            <div
+                class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 transform hover:-translate-y-1">
+                <div class="space-y-3">
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="flex items-start gap-3 flex-1">
+                            <span
+                                class="bg-gradient-to-r from-purple-500 to-purple-600 text-white font-bold text-sm px-3 py-1 rounded-full shadow-sm flex-shrink-0">
+                                #{{idx + 1}}
+                            </span>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-1 truncate">{{ agreement.name }}</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                        {{ agreement.description }}
+                    </p>
+
+                    <div class="flex flex-col gap-2 text-sm text-gray-600">
+                        <div class="flex items-center gap-2 bg-green-50 px-3 py-1.5 rounded-lg">
+                            <i class="fa-regular fa-calendar-check text-green-600"></i>
+                            <span class="font-medium">Inicio: {{ agreement.startDate | date:'dd MMM yyyy' }}</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-orange-50 px-3 py-1.5 rounded-lg">
+                            <i class="fa-regular fa-calendar-xmark text-orange-600"></i>
+                            <span class="font-medium">Fin: {{ agreement.finishDate | date:'dd MMM yyyy' }}</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2 pt-2">
+                        <button (click)="editAgreement(agreement)"
+                            class="flex-1 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2.5 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+                            title="Actualizar">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span>Editar</span>
+                        </button>
+
+                        <button (click)="deleteAgreements(agreement.idAgreements)"
+                            class="flex-1 bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+                            title="Eliminar">
+                            <i class="fa-solid fa-trash"></i>
+                            <span>Eliminar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            } @empty {
+            <div class="col-span-full bg-white rounded-2xl border-2 border-dashed border-gray-300 p-16 text-center">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-gray-100 rounded-full mb-4">
+                    <i class="fa-solid fa-handshake text-4xl text-gray-400"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">No hay convenios</h3>
+                <p class="text-gray-500 mb-6">Comienza agregando tu primer convenio</p>
+                <button
+                    class="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-lg transition-all duration-200 inline-flex items-center gap-2 shadow-md hover:shadow-lg">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Agregar Convenio</span>
+                </button>
+            </div>
+            }
+        </div>
+    </div>
+</div>

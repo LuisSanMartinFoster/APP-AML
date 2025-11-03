@@ -1,8 +1,6 @@
 import { effect, Injectable, signal } from "@angular/core";
 import { Activity } from "../gifs/interfaces/activity.interface";
 
-
-
 const loadFromLocalStorageActivity = (): Activity[] => {
     const activity = localStorage.getItem('activity');
     return activity ? JSON.parse(activity):[];
@@ -17,7 +15,17 @@ export class ActivityService{
     })
 
     addActivity(activity: Activity){
-        this.activity.update((list)=>[... list, activity])
+        this.activity.update((list)=>[activity, ...list])
+    }
+
+    deleteActivity(id: number){
+        this.activity.update((list) => list.filter(a => a.idActivity !== id))
+    }
+
+    updateActivity(updatedActivity: Activity){
+        this.activity.update((list) => 
+            list.map(a => a.idActivity === updatedActivity.idActivity ? updatedActivity : a)
+        )
     }
 
 }

@@ -11,13 +11,19 @@ export const routes: Routes = [
             {
                 path: 'agreements',
                 loadComponent: () =>
-                    import('./gifs/pages/agreements-page/agreements-page.component')
+                    import('./gifs/pages/agreements-page/agreements-page.component'),
+                data: {
+                    title: 'Convenios'
+                }
             },
 
             {
                 path: 'activity',
                 loadComponent: () =>
-                    import('./gifs/pages/activity-page/activity-page.component')
+                    import('./gifs/pages/activity-page/activity-page.component'),
+                data: {
+                    title: 'Actividades' 
+                }
             },
 
             {

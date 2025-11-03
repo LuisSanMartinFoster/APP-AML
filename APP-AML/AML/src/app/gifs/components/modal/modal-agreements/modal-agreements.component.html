@@ -1,5 +1,60 @@
-<div class="bg-white rounded-lg shadow-xl p-6 z-50 max-w-lg w-full mx-4" aria-modal="true" role="dialog">
-    <h3>
+<div class="bg-white rounded-2xl shadow-2xl p-6 z-50 max-w-lg w-full mx-auto space-y-4 relative" aria-modal="true" role="dialog">
+    <button 
+        type="button"
+        (click)="closeModal()"
+        class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors focus:outline-none"
+        aria-label="Cerrar modal">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
 
-    </h3>
+    <h2 class="text-xl font-semibold text-gray-800 mb-2 text-center pr-8">
+        {{ isEditMode() ? 'Editar Convenio' : 'Agregar Convenio' }}
+    </h2>
+
+    <div>
+        <label class="block text-gray-700 font-medium mb-1">Nombre del Convenio</label>
+        <input type="text" placeholder="Nombre del convenio"
+            class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+            [value]="name()" (input)="name.set(txtName.value)" #txtName>
+    </div>
+
+    <div>
+        <label class="block text-gray-700 font-medium mb-1">Descripción</label>
+        <textarea placeholder="Descripción del convenio"
+            class="w-full border border-gray-300 rounded-lg px-3 py-2 h-24 resize-none focus:ring-2 focus:ring-purple-500 focus:outline-none"
+            [value]="description()" (input)="description.set(txtDescription.value)" #txtDescription></textarea>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Fecha de Inicio</label>
+            <input
+                type="date"
+                class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                [value]="startDate()"
+                (input)="startDate.set($any($event.target).value)"
+            />
+        </div>
+
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Fecha de Finalización</label>
+            <input
+                type="date"
+                class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                [value]="finishDate()"
+                (input)="finishDate.set($any($event.target).value)"
+            />
+        </div>
+    </div>
+
+    <div class="flex justify-center mt-4">
+        <button 
+            type="button"
+            (click)="saveAgreement()"
+            class="bg-purple-600 text-white px-5 py-2 rounded-lg hover:bg-purple-700 transition-all shadow-md">
+            {{ isEditMode() ? 'Actualizar Convenio' : 'Agregar Convenio' }}
+        </button>
+    </div>
 </div>

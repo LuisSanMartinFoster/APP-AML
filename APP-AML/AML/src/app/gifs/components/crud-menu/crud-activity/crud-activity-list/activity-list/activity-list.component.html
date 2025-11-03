@@ -1,8 +1,77 @@
+<div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 pt-24 pb-12">
+  <div class="container mx-auto px-6 max-w-[1400px]">
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-gray-800 mb-2">Actividades</h1>
+      <p class="text-gray-600">Gestiona y organiza tus actividades</p>
+    </div>
 
-<ul>
-    @for (activity of activitys(); track activity.idActivity; let idx = $index) {
-        <li>
-            <span>{{idx+1}} - {{activity.title}}</span>
-        </li>
-    }
-</ul>
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      @for (activity of activitys(); track activity.idActivity; let idx = $index) {
+      <div
+        class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 transform hover:-translate-y-1">
+        <div class="space-y-3">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-start gap-3 flex-1">
+              <span
+                class="bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold text-sm px-3 py-1 rounded-full shadow-sm flex-shrink-0">
+                #{{idx + 1}}
+              </span>
+              <div class="flex-1 min-w-0">
+                <h3 class="text-xl font-semibold text-gray-800 mb-1 truncate">{{ activity.title }}</h3>
+                <p class="text-sm text-gray-500">
+                  <i class="fa-solid fa-user text-blue-500 mr-1"></i>
+                  <span class="font-medium text-gray-700">{{ activity.organizador }}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-600 text-sm leading-relaxed line-clamp-2">
+            {{ activity.description }}
+          </p>
+
+          <div class="flex flex-col gap-2 text-sm text-gray-600">
+            <div class="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-lg">
+              <i class="fa-regular fa-calendar text-blue-600"></i>
+              <span class="font-medium">{{ activity.startDateTime | date:'dd MMM yyyy, h:mm a' }}</span>
+            </div>
+            <div class="flex items-center gap-2 bg-red-50 px-3 py-1.5 rounded-lg">
+              <i class="fa-solid fa-location-dot text-red-600"></i>
+              <span class="font-medium truncate">{{ activity.place }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 pt-2">
+            <button (click)="editActivity(activity)"
+              class="flex-1 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2.5 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+              title="Actualizar">
+              <i class="fa-solid fa-pen-to-square"></i>
+              <span>Editar</span>
+            </button>
+
+            <button (click)="deleteActivity(activity.idActivity)"
+              class="flex-1 bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+              title="Eliminar">
+              <i class="fa-solid fa-trash"></i>
+              <span>Eliminar</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      } @empty {
+      <div class="col-span-full bg-white rounded-2xl border-2 border-dashed border-gray-300 p-16 text-center">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-gray-100 rounded-full mb-4">
+          <i class="fa-regular fa-calendar-xmark text-4xl text-gray-400"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-700 mb-2">No hay actividades</h3>
+        <p class="text-gray-500 mb-6">Comienza agregando tu primera actividad</p>
+        <button
+          class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-all duration-200 inline-flex items-center gap-2 shadow-md hover:shadow-lg">
+          <i class="fa-solid fa-plus"></i>
+          <span>Agregar Actividad</span>
+        </button>
+      </div>
+      }
+    </div>
+  </div>
+</div>

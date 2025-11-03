@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog'; 
-import { ModalAgreementsComponent } from '../../modal/modal-agreements/modal-agreements.component';
+import { ModalAgreementComponent } from '../../modal/modal-agreements/modal-agreements.component';
 
 @Component({
   selector: 'app-btn-add-agreements',
@@ -14,6 +14,6 @@ export class BtnAddAgreementsComponent {
   public addIconClass: string = 'fa-solid fa-plus';
 
   protected openModalAgreements(){
-    this.dialog.open(ModalAgreementsComponent);
+    this.dialog.open(ModalAgreementComponent);
   }
 }
